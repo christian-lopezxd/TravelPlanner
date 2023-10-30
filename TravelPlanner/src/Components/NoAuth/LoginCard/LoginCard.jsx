@@ -4,15 +4,15 @@ const LoginCard= () => {
     return(
         
             <form className="flex flex-col bg-white px-10 py-10 rounded-3xl  w-1/3 ">
-      <h1 className="font-montserrat font-bold text-grissoft text-center text-5xl pb-4 ">
+      <h1 className="font-montserrat font-bold text-black text-center text-5xl pb-4 ">
         Login
       </h1>
 
       <div className=" flex flex-col mt-8 gap-y-2">
         <div className="">
-          <div className="text-lg xl:text-base text-grissoft">Email</div>
-          <label className="relative block text-grissoft ">
-            <span className="absolute inset-y-0 flex text-grissoft items-center">
+          <div className="text-lg xl:text-base text-black">Email</div>
+          <label className="relative block text-black ">
+            <span className="absolute inset-y-0 flex text-black items-center">
               
             </span>
             <input
@@ -26,11 +26,11 @@ const LoginCard= () => {
         </div>
 
         <div className="">
-          <label className="text-lg xl:text-base text-grissoft">
+          <label className="text-lg xl:text-base text-black">
             Password
           </label>
-          <label className="relative block  text-grissoft">
-            <span className="absolute inset-y-0 flex items-center text-grissoft">
+          <label className="relative block  text-black">
+            <span className="absolute inset-y-0 flex items-center text-black">
              
             </span>
             <input
