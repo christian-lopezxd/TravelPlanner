@@ -1,10 +1,15 @@
 import React from "react";
 import Navbar from "../../Components/NoAuth/Navbar/Navbar";
+import LoginCard from "../../Components/NoAuth/LoginCard/LoginCard";
 
 const Login = () => {
     return (
-        <section>
+        <section className="min-h-screen flex flex-col">
             <Navbar />
+            <div className=" flex grow items-center justify-center bg-secondary ">
+            <LoginCard/>
+            </div>
+           
 
         </section>
     )
