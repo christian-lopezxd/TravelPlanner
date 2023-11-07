@@ -8,17 +8,17 @@ import UserRouter from "./UserRouter";
 
 const MainRouter = () => {
 
-    let role = null;
-     
-      return(
-          <BrowserRouter>
-          {!role && <NoAuthRouter />}
-          {role == "user" && <UserRouter />}
-          {role == "admin" && <AdminRouter />}
-          {role == "superadmin" && <SuperAdminRouter/>}
-        
-          </BrowserRouter>
-      )
-  }
-  
-  export default MainRouter;
+    let role = "user";
+
+    return (
+        <BrowserRouter>
+            {!role && <NoAuthRouter />}
+            {role == "user" && <UserRouter />}
+            {role == "admin" && <AdminRouter />}
+            {role == "superadmin" && <SuperAdminRouter />}
+
+        </BrowserRouter>
+    )
+}
+
+export default MainRouter;
