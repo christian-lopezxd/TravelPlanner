@@ -6,7 +6,7 @@ const Login = () => {
     return (
         <section className="min-h-screen flex flex-col">
             <Navbar />
-            <div className=" flex grow items-center justify-center bg-secondary ">
+            <div className=" flex grow items-center justify-center bg-lightgray ">
             <LoginCard/>
             </div>
            

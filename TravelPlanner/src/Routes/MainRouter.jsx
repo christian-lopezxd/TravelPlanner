@@ -3,19 +3,19 @@ import NoAuthRouter from "./NoAuthRouter";
 import AdminRouter from "./AdminRouter";
 import SuperAdminRouter from "./SuperAdminRouter";
 import UserRouter from "./UserRouter";
+import { useState } from "react";
 
 
 
 const MainRouter = () => {
 
-    let role = "user";
+    const token = localStorage.getItem("token");
+
 
     return (
         <BrowserRouter>
-            {!role && <NoAuthRouter />}
-            {role == "user" && <UserRouter />}
-            {role == "admin" && <AdminRouter />}
-            {role == "superadmin" && <SuperAdminRouter />}
+            {!token && <NoAuthRouter />}
+            {token && <UserRouter />}
 
         </BrowserRouter>
     )

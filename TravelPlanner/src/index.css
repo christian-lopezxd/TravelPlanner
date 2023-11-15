@@ -12,3 +12,7 @@
     font-family: "Montserrat";
     src: url("../public/fonts/Montserrat.ttf");
 }
+@font-face {
+    font-family: "Barlow";
+    src: url("../public/fonts/Barlow.ttf");
+}
