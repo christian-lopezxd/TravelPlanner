@@ -35,6 +35,7 @@ const RegisterCard = () => {
   formData.append('name', name);
   formData.append('email', email);
   formData.append("password", password)
+  formData.append("role", "user")
  
 
   AuthServices.Register(formData, navigate);
