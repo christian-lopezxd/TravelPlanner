@@ -70,7 +70,7 @@ const GroupInfoCard = () => {
                         <div className='flex gap-2 justify-center'>
                             <div className='max-w-[30%]'>
                                 <img
-                                    src={data.picture}
+                                    src={`https://sed.mingo.studio/images/${data._id}/${data.picture}`}
                                     alt="Imagen"
                                     className="w-full h-full object-cover"
                                 />
@@ -92,7 +92,7 @@ const GroupInfoCard = () => {
                         </div>
                     </div>
                     <div className='flex flex-col items-center'>
-                    <NavLink to="/NewTrip"> <button className='bg-purple hover:bg-darkpurple text-white text-2xl px-2 py-1 rounded shadow'>+ New Trip</button></NavLink>
+                    <NavLink to="NewTrip"> <button className='bg-purple hover:bg-darkpurple text-white text-2xl px-2 py-1 rounded shadow'>+ New Trip</button></NavLink>
                     <h1 className='text-left w-[100%]'>Active trips: </h1>
                     <TripCard/> 
                     </div>

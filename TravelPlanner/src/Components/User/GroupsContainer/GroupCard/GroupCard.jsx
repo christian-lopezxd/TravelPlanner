@@ -5,17 +5,34 @@ import { BsTrash3 } from "react-icons/bs";
 import { AiOutlineTeam } from "react-icons/ai";
 import GroupServices from '../../../../Services/GroupServices';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 const GroupCard = (props) => {
 
+
+  const [data, setData] = useState()
+
+  useEffect(() => {
+      
+    GroupServices.getImages(props.id, props.picture).then((info) => {
+      setData(info);
+
+      
+    });
+  
+   
+    
+  }, []);
+
+console.log(data)
  
   return (
-    <div className='max-w-[30%] h-full relative group '>
-      <div className='w-full relative overflow-hidden rounded'>
+    <div className='w-[30%] h-[30vh] relative group '>
+      <div className='w-full h-[100%] relative overflow-hidden rounded'>
         <img
-          src={props.image ? props.image : "https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg"}
-          className="w-full h-full object-cover transition-all transform-gpu scale-100 hover:scale-105"
+          src={data}
+          className="w-full h-full object-fill transition-all transform-gpu scale-100 hover:scale-105"
         />
         <div className='flex flex-col  gap-4 absolute inset-0 p-4 bg-black text-white bg-opacity-50 transition-all transform-gpu opacity-0 group-hover:opacity-100 font-montserrat justify-center items-center'>
           <p>{props.name}</p>

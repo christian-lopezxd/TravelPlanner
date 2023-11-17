@@ -25,7 +25,7 @@ GroupServices.getAll = async ( ) => {
 }
 
 
-GroupServices.getOne = async ( id) => {
+GroupServices.getOne = async (id) => {
 
    
     try{
@@ -43,6 +43,24 @@ GroupServices.getOne = async ( id) => {
       throw error
   }
 }
+
+GroupServices.getImages = async (id, name) => {
+  try {
+    const response = await axios.get(`${url}/images/${id}/${name}`, {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+        'Access-Control-Allow-Origin': '*',
+      },
+      responseType: 'blob'
+    });
+
+    const imageUrl = URL.createObjectURL(response.data);
+    return imageUrl;
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 
 

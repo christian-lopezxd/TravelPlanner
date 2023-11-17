@@ -15,7 +15,7 @@ const UserRouter = () => {
     return(
         <Routes>
             <Route path="/" element={<Home/>}></Route>
-            <Route path="/NewTrip" element={<CreateTrip/>}></Route>
+            <Route path="/group/:id/NewTrip" element={<CreateTrip/>}></Route>
             <Route path="/EditTrip/:id" element={<EditTrip/>}></Route>
             <Route path="/Trip/:id" element={<TripInfo/>}></Route>
             <Route path="/groups" element={<Groups/>}></Route>

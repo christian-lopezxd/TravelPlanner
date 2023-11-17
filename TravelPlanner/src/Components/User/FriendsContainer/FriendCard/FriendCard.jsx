@@ -1,7 +1,23 @@
 import React from 'react'
 import { BsTrash3 } from "react-icons/bs";
+import FriendServices from '../../../../Services/FriendServices';
+import { useState, useEffect } from 'react';
 
 const FriendCard = (props) => {
+  const [data, setData] = useState()
+
+  useEffect(() => {
+      
+    FriendServices.getImages(props.picture).then((info) => {
+      setData(info);
+    });
+  }, []);
+
+
+
+
+
+
   return (
     <div className="flex justify-between items-center w-[100%] bg-white shadow-2xl min-h-[30px] rounded p-3 font-montserrat text-black rounded-xl ">
 
@@ -10,16 +26,16 @@ const FriendCard = (props) => {
 
       <div className="w-20 h-20 rounded-full overflow-hidden">
         <img
-          src="https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg"
+          src={data}
           alt="Imagen"
           className="w-full h-full object-cover"
         />
       </div>
 
       <div className='flex flex-col w-[80%]'>
-        <h1 className='font-thin'>#id</h1>
-        <h1 className='font-semibold'>{props.name}</h1>
-        <h1 className='font-semibold'>Email</h1>
+        <h1 className='font-thin'>{props.name}</h1>
+        <h1 className='font-semibold'>{props.email}</h1>
+        
       </div>
 
     </div>

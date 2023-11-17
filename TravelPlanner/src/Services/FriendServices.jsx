@@ -2,10 +2,10 @@ const url = "https://sed.mingo.studio"
 import axios from "axios";
 
 
-const FriendService = () =>{}
+const FriendServices = () =>{}
 
 
-FriendService.getAll = async ( ) => {
+FriendServices.getAll = async ( ) => {
 
    
     try{
@@ -17,11 +17,57 @@ FriendService.getAll = async ( ) => {
         
         }) 
         
+        console.log(response)
         
-      return response.data
+      return response.data.friend
   }catch(error){
       throw error
   }
 }
 
-export default FriendService;
+
+FriendServices.add = async (email) => {
+
+  const config = {
+    headers: {
+        
+        "Authorization":'Bearer ' + localStorage.getItem("token")
+    }
+}
+
+
+  try{
+    const response = await axios.post(`${url}/api/friend`, {
+        email,
+       
+        
+      }, config) 
+     
+
+      window.location.reload()
+    return response.data.jwt
+}catch(error){
+    throw error
+}
+}
+
+
+FriendServices.getImages = async (id) => {
+  try {
+    const response = await axios.get(`${url}/images/${id}`, {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+        'Access-Control-Allow-Origin': '*',
+      },
+      responseType: 'blob'
+    });
+
+    const imageUrl = URL.createObjectURL(response.data);
+    return imageUrl;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+export default FriendServices;
