@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-const url = "http://127.0.0.1:3001"
+const url = "./.."
 
 const AuthServices = () => {}
 

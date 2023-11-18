@@ -70,7 +70,7 @@ const GroupInfoCard = () => {
                         <div className='flex gap-2 justify-center'>
                             <div className='max-w-[30%]'>
                                 <img
-                                    src={`http://127.0.0.1:3001/images/${data._id}/${data.picture}`}
+                                    src={`./../images/${data._id}/${data.picture}`}
                                     alt="Imagen"
                                     className="w-full h-full object-cover"
                                 />
