@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-const url = "https://sed.mingo.studio"
+const url = "http://127.0.0.1:3001"
 
 
 const TransportServices = () => {}

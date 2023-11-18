@@ -1,4 +1,4 @@
-const url = "https://sed.mingo.studio"
+const url = "http://127.0.0.1:3001"
 import axios from "axios";
 
 
