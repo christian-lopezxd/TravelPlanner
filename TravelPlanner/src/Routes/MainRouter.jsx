@@ -4,7 +4,7 @@ import NoAuthRouter from "./NoAuthRouter";
 import SuperAdminRouter from "./SuperAdminRouter";
 import UserRouter from "./UserRouter";
 import { useState, useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
+import jwt_decode from "jwt-decode";
 
 const MainRouter = () => {
     const token = localStorage.getItem("token");
@@ -13,7 +13,7 @@ const MainRouter = () => {
     useEffect(() => {
         if (token) {
             try {
-                const decoded = jwtDecode(token);
+                const decoded = jwt_decode(token);
                 if (decoded && decoded.user && decoded.user.role) {
                     setUserRole(decoded.user.role);
                 }
@@ -23,8 +23,6 @@ const MainRouter = () => {
             }
         }
     }, [token]);
-
-    console.log(userRole)
 
     return (
         <BrowserRouter>
