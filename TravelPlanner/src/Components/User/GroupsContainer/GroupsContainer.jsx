@@ -34,7 +34,7 @@ console.log(data)
         data ? data.map((group, ) =>{
           const {name, picture, _id, aproved} = group;
 
-          if(aproved == true){
+          if(aproved == false){
             return( <GroupCard 
               key={name}
               name={name}

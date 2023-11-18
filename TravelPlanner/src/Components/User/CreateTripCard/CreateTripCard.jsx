@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { IoChevronBackSharp, IoUmbrella } from "react-icons/io5";
 import DestinationServices from '../../../Services/DestinationServices';
 import { useEffect, useState } from 'react';
@@ -7,6 +7,8 @@ import CountryServices from '../../../Services/CountryServices';
 import TransportServices from '../../../Services/TransportServices';
 
 const CreateTripCard = () => {
+    const id = useParams();
+
     const [name, SetName] = useState("")
     const [descripton, SetDescription] = useState("")
     const [place_of_stay, SetPlace_of_stay] = useState("")
@@ -15,12 +17,10 @@ const CreateTripCard = () => {
     const [begin_date, SetBegin_date] = useState("")
     const [end_date, SetEnd_date] = useState("")
     const [cid, SetCid] = useState("")
-    const [gid, SetGid] = useState("")
     const [picture, SetPicture] = useState([])
 
     const [country, setCountry] = useState()
     const [transport, setTransport] = useState()
-
     useEffect(() => {
 
         CountryServices.getAll().then((info) => {
@@ -53,9 +53,9 @@ const CreateTripCard = () => {
         formData.append("begin_date", begin_date);
         formData.append("end_date", end_date);
         formData.append('cid', cid);
-        formData.append('gid', gid);
+        formData.append('gid', id.id);
         formData.append("picture", picture);
-        formData.append("place_of_stay", budget)
+        formData.append("place_of_stay", place_of_stay)
 
 
         DestinationServices.Create(formData);
@@ -103,7 +103,7 @@ const CreateTripCard = () => {
                             <label>Budget: </label>
                             <input value={budget} onChange={(e) => SetBudget(e.target.value)} type="number" className="text-black p-2   border-b border-b-black " placeholder="Enter budget $"></input>
                             <label>Images: </label>
-                            <input type="file" accept="image/jpeg" multiple className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple file:text-white hover:file:bg-darkpurple  " placeholder="Enter group name"></input>
+                            <input value={picture} onChange={(e) => SetPicture(e.target.value)} type="file" accept="image/jpeg" multiple className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple file:text-white hover:file:bg-darkpurple  " placeholder="Enter group name"></input>
                         </div>
 
                         <div className='flex flex-col w-[45%] p-5 gap-3 rounded-xl'>

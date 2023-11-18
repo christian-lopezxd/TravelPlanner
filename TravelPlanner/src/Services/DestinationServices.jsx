@@ -6,8 +6,6 @@ const DestinationServices = () => {}
 
 
 DestinationServices.getAll = async (id) => {
-
-   
     try{
       const response = await axios.get(`${url}/api/destination/${id}`,   {
         
@@ -24,7 +22,7 @@ DestinationServices.getAll = async (id) => {
   }
 }
 
-DestinationServices.Create  = async(formData, navigate) => {
+DestinationServices.Create  = async(formData) => {
     
   try{
       const response = await axios.postForm(`${url}/api/destination`, formData, {
