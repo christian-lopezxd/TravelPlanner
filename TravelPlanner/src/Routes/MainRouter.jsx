@@ -1,24 +1,38 @@
 import { BrowserRouter } from "react-router-dom";
 import NoAuthRouter from "./NoAuthRouter";
-import AdminRouter from "./AdminRouter";
+
 import SuperAdminRouter from "./SuperAdminRouter";
 import UserRouter from "./UserRouter";
-import { useState } from "react";
-
-
+import { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 const MainRouter = () => {
-
     const token = localStorage.getItem("token");
+    const [userRole, setUserRole] = useState(null);
 
+    useEffect(() => {
+        if (token) {
+            try {
+                const decoded = jwtDecode(token);
+                if (decoded && decoded.user && decoded.user.role) {
+                    setUserRole(decoded.user.role);
+                }
+            } catch (error) {
+                console.error("Error decoding token:", error);
+                // Manejar el error según sea necesario
+            }
+        }
+    }, [token]);
+
+    console.log(userRole)
 
     return (
         <BrowserRouter>
             {!token && <NoAuthRouter />}
-            {token && <UserRouter />}
-
+            {token && userRole === 'admin' && <SuperAdminRouter />}
+            {token && userRole === 'user' && <UserRouter />}
         </BrowserRouter>
-    )
+    );
 }
 
-export default MainRouter;
+export default MainRouter

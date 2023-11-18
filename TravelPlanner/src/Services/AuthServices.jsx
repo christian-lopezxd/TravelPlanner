@@ -53,5 +53,24 @@ AuthServices.Register = async(formData, navigate) => {
     }
 }
 
+AuthServices.getUser = async () => {
+
+   
+    try{
+      const response = await axios.get(`${url}/api/user`,   {
+        
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem("token")
+        }
+        
+        }) 
+        
+        
+      return response.data
+  }catch(error){
+      throw error
+  }
+}
+
 
 export default AuthServices;

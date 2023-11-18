@@ -9,12 +9,13 @@ import GroupInfo from "../Pages/User/GroupInfo";
 import EditGroup from "../Pages/User/EditGroup";
 import EditTrip from "../Pages/User/EditTrip";
 import CreateGroup from "../Pages/User/CreateGroup";
+import Profile from "../Pages/User/Profile";
 
 
 const UserRouter = () => {
     return(
         <Routes>
-            <Route path="/" element={<Home/>}></Route>
+            <Route path="/" element={<Groups/>}></Route>
             <Route path="/group/:id/NewTrip" element={<CreateTrip/>}></Route>
             <Route path="/EditTrip/:id" element={<EditTrip/>}></Route>
             <Route path="/Trip/:id" element={<TripInfo/>}></Route>
@@ -23,6 +24,7 @@ const UserRouter = () => {
             <Route path="/group/:id" element={<GroupInfo/>}></Route>
             <Route path="/EditGroup/:id" element={<EditGroup/>}></Route>
             <Route path="/friends" element={<Friends/>}></Route>
+            <Route path="/profile" element={<Profile/>}></Route>
             
         </Routes>
 

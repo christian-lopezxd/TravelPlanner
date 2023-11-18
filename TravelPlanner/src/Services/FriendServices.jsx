@@ -64,8 +64,10 @@ FriendServices.getImages = async (id) => {
 
     const imageUrl = URL.createObjectURL(response.data);
     return imageUrl;
+
   } catch (error) {
-    throw error;
+    return 'https://i0.wp.com/conference.nbasbl.org/wp-content/uploads/2022/05/placeholder-image-1.png?ssl=1';
+  
   }
 };
 

@@ -1,15 +1,13 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
 const url = "https://sed.mingo.studio"
 
+const ContinentServices = () => {}
 
-const TransportServices = () => {}
-
-TransportServices.getAll = async ( ) => {
+ContinentServices.getAll = async ( ) => {
 
    
     try{
-      const response = await axios.get(`${url}/api/transport`,   {
+      const response = await axios.get(`${url}/api/continent`,   {
         
         headers: {
           'Authorization': 'Bearer ' + localStorage.getItem("token")
@@ -17,15 +15,15 @@ TransportServices.getAll = async ( ) => {
         
         }) 
         
-        console.log(response)
-        
+     
+      
       return response.data
   }catch(error){
       throw error
   }
 }
 
-TransportServices.Create = async(name) => {
+ContinentServices.Create = async(name) => {
     
   const config = {
     headers: {
@@ -35,8 +33,8 @@ TransportServices.Create = async(name) => {
 }
 
   try{
-    const response = await axios.post(`${url}/api/transport`, {
-      name,
+    const response = await axios.post(`${url}/api/continent`, {
+      name
      
       
     }, config)
@@ -50,7 +48,8 @@ TransportServices.Create = async(name) => {
 }
 
 
-TransportServices.Update = async(name) => {
+
+ContinentServices.Update = async(name, idc, cid) => {
     
   const config = {
     headers: {
@@ -60,8 +59,9 @@ TransportServices.Update = async(name) => {
 }
 
   try{
-    const response = await axios.put(`${url}/api/friend`, {
+    const response = await axios.put(`${url}/api/country`, {
       name,
+      idc
      
       
     }, config)
@@ -74,4 +74,4 @@ TransportServices.Update = async(name) => {
 
 }
 
-export default TransportServices;
+export default ContinentServices;

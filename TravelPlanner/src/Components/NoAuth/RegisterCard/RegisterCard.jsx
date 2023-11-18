@@ -113,7 +113,7 @@ const RegisterCard = () => {
           </label>
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="font-monserrat font-semibold text-black bg-secondary hover:bg-primary py-2 px-4 rounded-2xl w-full text-center hover:text-white">Login</button>
+          <button type="submit" className="font-monserrat font-semibold text-black bg-secondary hover:bg-primary py-2 px-4 rounded-2xl w-full text-center hover:text-white">Register</button>
         </div>
       </div>
     </form>

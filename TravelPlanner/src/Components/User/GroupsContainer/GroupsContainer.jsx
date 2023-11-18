@@ -32,14 +32,16 @@ console.log(data)
      <div className='flex flex-wrap justify-center w-[100%] h-[30vh] p-5 gap-1'>
       {
         data ? data.map((group, ) =>{
-          const {name, picture, _id} = group;
+          const {name, picture, _id, aproved} = group;
 
-          return( <GroupCard 
-            key={name}
-            name={name}
-            picture={picture} 
-            id = {_id}/>
-            );
+          if(aproved == true){
+            return( <GroupCard 
+              key={name}
+              name={name}
+              picture={picture} 
+              id = {_id}/>
+              );
+          }
         }) : ""
       }
      </div>
