@@ -33,8 +33,8 @@ const EditProfileCard = () => {
         formData.append("role", localStorage.getItem("role"))
 
 
-        UsersServices.Create(formData);
-        { }
+        UsersServices.update(formData);
+        
 
 
     }

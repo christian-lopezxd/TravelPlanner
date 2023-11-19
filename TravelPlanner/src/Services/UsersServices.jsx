@@ -39,26 +39,45 @@ UsersServices.getImages = async ( name) => {
   }
 };
 
-UsersServices.Create = async(formData) => {
+
+
+UsersServices.update = async(formData, navigate) => {
     
   try{
-      const response = await axios.postForm(`${url}/api/user`, formData, {
+      const response = await axios.putForm(`${url}/api/user`, formData, {
           headers: {
               "Content-Type": "multipart/form-data",
               'Authorization': 'Bearer ' + localStorage.getItem("token")
+
             }
 
-        }) 
-      
-      
+        })
+        
+        console.log(response)
+  if (response.status === 201) {
+      alert("Usuario editado exitosamente");
+      navigate("/");
+    } else if (response.status === 409) {
+      alert("El usuario ya existe. Puedes iniciar sesión.");
+      // Puedes hacer algo más aquí, como redirigir al usuario a la página de inicio de sesión
+    } else {
+      // Otro código de estado, manejar según sea necesario
+      alert("Error al intentar registrar al usuario.");
+    }
+          
+
+        
 
        
       return response.data
       
   }catch(error){
-      throw error
+       // Aquí puedes manejar los errores de la petición
+  console.error("Error en la petición de registro:", error);
+  alert("Error en la petición de edicion. Por favor, inténtalo de nuevo.");
   }
 }
+
 
 
 export default UsersServices;
