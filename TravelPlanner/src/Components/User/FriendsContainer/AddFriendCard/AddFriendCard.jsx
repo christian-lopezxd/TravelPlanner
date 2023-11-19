@@ -21,7 +21,7 @@ const AddFriendCard = () => {
      <form onSubmit={(e) => Create(e)} className="flex  gap-2 items-center" >
             <label>Add a Friend: </label>
             <input value={email}
-              onChange={(e) => setEmail(e.target.value)} type="name" className="text-black p-2 ml-5 rounded border border-lightgray  "placeholder="enter a user ID"></input>
+              onChange={(e) => setEmail(e.target.value)} type="name" className="text-black p-2 ml-5 rounded border border-lightgray  "placeholder="enter a user email"></input>
             <div className="flex justify-center  "><button type="submit"  className="bg-purple text-white hover:bg-darkpurple rounded-xl font-semibold  p-2"> Send</button></div>
         </form>
 
