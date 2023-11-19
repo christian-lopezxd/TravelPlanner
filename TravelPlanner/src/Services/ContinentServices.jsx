@@ -38,6 +38,7 @@ ContinentServices.Create = async(name) => {
      
       
     }, config)
+    
     window.location.reload()
       return response.data
   }catch(error){

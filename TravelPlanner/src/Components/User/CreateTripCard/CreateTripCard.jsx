@@ -55,7 +55,6 @@ const CreateTripCard = () => {
         formData.append('cid', cid);
         formData.append('gid', id.id);
         formData.append("picture", picture);
-        formData.append("place_of_stay", place_of_stay)
 
 
         DestinationServices.Create(formData);
@@ -82,7 +81,7 @@ const CreateTripCard = () => {
                     <div className='w-[100%]  flex items-start justify-center gap-5 '>
                         <div className='w-[45%] flex flex-col p-5 gap-3 justify-center  rounded-xl '>
                             <label>Description: </label>
-                            <input value={descripton} onChange={(e) => SetDescription(e.target.value)} type="text" className="text-black p-2   border rounded border-black " placeholder="Enter a description"></input>
+                            <input value={descripton} onChange={(e) => SetDescription(e.target.value)} type="text" minLength="10" className="text-black p-2   border rounded border-black " placeholder="Enter a description"></input>
                             <label>Country: </label>
                             <select value={cid} onChange={(e) => SetCid(e.target.value)} name="Countries" className="bg-white border rounded-md p-2 m-1 w-full">
 
@@ -108,7 +107,7 @@ const CreateTripCard = () => {
 
                         <div className='flex flex-col w-[45%] p-5 gap-3 rounded-xl'>
                             <label>place of stay: </label>
-                            <input value={place_of_stay} onChange={(e) => SetPlace_of_stay(e.target.value)} type="text" className="text-black p-2   border rounded border-black " placeholder="Enter a description"></input>
+                            <input value={place_of_stay} onChange={(e) => SetPlace_of_stay(e.target.value)} type="text" minLength="10" className="text-black p-2   border rounded border-black " placeholder="Enter a description"></input>
                             <label>Transport: </label>
                             <select value={tid} onChange={(e) => SetTid(e.target.value)} name="Countries" className="bg-white border rounded-md p-2 m-1 w-full">
 

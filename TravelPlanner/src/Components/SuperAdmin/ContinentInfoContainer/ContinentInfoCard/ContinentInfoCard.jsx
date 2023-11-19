@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { BsTrash3 } from "react-icons/bs";
 
 const ContinentInfoCard = (props) => {
   return (
@@ -18,7 +19,7 @@ const ContinentInfoCard = (props) => {
     </div>
 
     <div className='flex gap-2 font-semibold p-2'>
-      <NavLink to={`/continent/` }><button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'> </button></NavLink>
+      <NavLink to={`/continent/` }><button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'> <BsTrash3/></button></NavLink>
     </div>
 
   </div>

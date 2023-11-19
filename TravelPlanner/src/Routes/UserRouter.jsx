@@ -10,6 +10,7 @@ import EditGroup from "../Pages/User/EditGroup";
 import EditTrip from "../Pages/User/EditTrip";
 import CreateGroup from "../Pages/User/CreateGroup";
 import Profile from "../Pages/User/Profile";
+import EditProfile from "../Pages/User/EditProfile";
 
 
 const UserRouter = () => {
@@ -25,6 +26,7 @@ const UserRouter = () => {
             <Route path="/EditGroup/:id" element={<EditGroup/>}></Route>
             <Route path="/friends" element={<Friends/>}></Route>
             <Route path="/profile" element={<Profile/>}></Route>
+            <Route path="/profile/edit" element={<EditProfile/>}></Route>
             
         </Routes>
 

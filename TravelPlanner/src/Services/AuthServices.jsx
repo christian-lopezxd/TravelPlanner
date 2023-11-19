@@ -15,9 +15,14 @@ AuthServices.login = async (ide, idp, navigate) => {
 
           }) 
           localStorage.setItem("token", response.data.JWT)
+          localStorage.setItem("email", response.data.user.email)
+          localStorage.setItem("picture", response.data.user.picture)
+          if (window.location.pathname !== "/") {
+            navigate("/");
+            window.location.reload();
+        }
           
-          navigate("/")
-          window.location.reload()
+        
         return response.data.jwt
     }catch(error){
         throw error
@@ -34,43 +39,34 @@ AuthServices.Register = async(formData, navigate) => {
                 "Content-Type": "multipart/form-data"
               }
   
-          }) 
-          console.log(response)
+          })
           
-          alert(response.data.message);
-          if(response.status== 200){
-            navigate("/")
-          } 
-          if(response.status == 409){
-            alert("Revisa bien los campos")
-          } 
+          
+    if (response.status === 201) {
+        alert("Usuario creado exitosamente");
+        navigate("/");
+      } else if (response.status === 409) {
+        alert("El usuario ya existe. Puedes iniciar sesión.");
+        // Puedes hacer algo más aquí, como redirigir al usuario a la página de inicio de sesión
+      } else {
+        // Otro código de estado, manejar según sea necesario
+        alert("Error al intentar registrar al usuario.");
+      }
+            
+
+          
   
          
-        return response.data.message
+        return response.data
         
     }catch(error){
-        throw error
+         // Aquí puedes manejar los errores de la petición
+    console.error("Error en la petición de registro:", error);
+    alert("Error en la petición de registro. Por favor, inténtalo de nuevo.");
     }
 }
 
-AuthServices.getUser = async () => {
 
-   
-    try{
-      const response = await axios.get(`${url}/api/user`,   {
-        
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem("token")
-        }
-        
-        }) 
-        
-        
-      return response.data
-  }catch(error){
-      throw error
-  }
-}
 
 
 export default AuthServices;

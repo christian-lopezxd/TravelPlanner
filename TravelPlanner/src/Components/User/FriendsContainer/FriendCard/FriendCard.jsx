@@ -30,10 +30,7 @@ const FriendCard = (props) => {
           src={data}
           alt="Imagen"
           className="w-full h-full object-cover"
-          onError={(e) => { 
-            e.target.onerror = null; 
-            e.target.src = 'https://i0.wp.com/conference.nbasbl.org/wp-content/uploads/2022/05/placeholder-image-1.png?ssl=1'; 
-          }}
+      
         />
       </div>
 

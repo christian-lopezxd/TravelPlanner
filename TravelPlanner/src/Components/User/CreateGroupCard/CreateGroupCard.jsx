@@ -48,21 +48,10 @@ const CreateGroupCard = () => {
                         <input value={name} onChange={(e) => SetName(e.target.value)} type="name" className="text-black p-2 ml-5  border-b border-b-black w-[50%]" placeholder="Enter group name"></input>
                         <div className='w-[100%]  flex items-start justify-center gap-5 '>
                             <div className='w-[45%] flex flex-col p-5 gap-5 justify-center  rounded-xl '>
-                                <input value={descripton} onChange={(e) => SetDescription(e.target.value)} type="text" className="text-black p-2   border-b border-b-black " placeholder="Enter a description"></input>
+                                <input value={descripton} onChange={(e) => SetDescription(e.target.value)} type="text" className="text-black p-2   border-b border-b-black " minLength="10" placeholder="Enter a description"></input>
                                 <input value={date} onChange={(e) => SetDate(e.target.value)} type="date" className="text-black p-2  border-b border-b-black" placeholder="Enter the trip date"></input>
                                 <input value={budget} onChange={(e) => SetBudget(e.target.value)} type="number" className="text-black p-2   border-b border-b-black " placeholder="Enter budget $"></input>
                                 <input onChange={(e) => SetPicture(e.target.files[0])} type="file" accept="image/jpeg" multiple className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple file:text-white hover:file:bg-darkpurple  " placeholder="Enter group name"></input>
-                            </div>
-
-                            <div className=' w-[45%] p-5  rounded-xl'>
-                                <h1>Select the members of this group:</h1>
-                                <div className=' p-5 overflow-y-scroll overflow-hidden max-h-[40vh] '>
-
-                                    <div className='flex items-center gap-3'>
-                                        <input type='checkbox' value="amigo" /><label>amigo</label>
-                                    </div>
-
-                                </div>
                             </div>
                         </div>
 

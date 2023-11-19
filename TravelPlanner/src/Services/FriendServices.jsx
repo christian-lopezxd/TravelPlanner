@@ -2,6 +2,7 @@ const url = "./.."
 import axios from "axios";
 
 
+
 const FriendServices = () =>{}
 
 
@@ -17,7 +18,7 @@ FriendServices.getAll = async ( ) => {
         
         }) 
         
-        console.log(response)
+       
         
       return response.data.friend
   }catch(error){
@@ -66,7 +67,7 @@ FriendServices.getImages = async (id) => {
     return imageUrl;
 
   } catch (error) {
-    return 'https://i0.wp.com/conference.nbasbl.org/wp-content/uploads/2022/05/placeholder-image-1.png?ssl=1';
+    return '/Images/placeholder.png';
   
   }
 };

@@ -17,7 +17,6 @@ TransportServices.getAll = async ( ) => {
         
         }) 
         
-        console.log(response)
         
       return response.data
   }catch(error){

@@ -1,6 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
 import NoAuthRouter from "./NoAuthRouter";
-
 import SuperAdminRouter from "./SuperAdminRouter";
 import UserRouter from "./UserRouter";
 import { useState, useEffect } from "react";
@@ -14,6 +13,8 @@ const MainRouter = () => {
         if (token) {
             try {
                 const decoded = jwt_decode(token);
+                localStorage.setItem("role", decoded.user.role )
+                localStorage.setItem("id", decoded.user._id )
                 if (decoded && decoded.user && decoded.user.role) {
                     setUserRole(decoded.user.role);
                 }

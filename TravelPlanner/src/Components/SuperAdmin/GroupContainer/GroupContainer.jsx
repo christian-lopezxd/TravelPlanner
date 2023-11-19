@@ -9,7 +9,7 @@ const GroupContainer = () => {
 
   useEffect(() => {
       
-    GroupServices.getAll().then((info) => {
+    GroupServices.getAllunaproved().then((info) => {
       setData(info);
       
     });
@@ -23,16 +23,22 @@ const GroupContainer = () => {
   return (
     <div className="flex col-span-5 items-center justify-center gap-2  py-5 text-white bg-lightgray min-h-[89.5vh]" > 
     <div className='bg-white w-[90%] flex flex-col items-center  gap-4  min-h-[100%] '>
-    <div className='bg-primary w-full h-[10vh]'> </div>
+    <div className='bg-primary w-full flex h-[10vh] items-center p-5 font-montserrat font-semibold text-xl'> Unapproved Groups </div>
 
     
-    <div className='flex flex-wrap justify-center w-[100%] h-[30vh] p-5 gap-1'>
+    <div className='flex flex-wrap justify-center w-[100%] p-5 gap-1'>
     { data ? data.map((transport) =>{
-          const {name, _id} = transport;
+          const {name, _id, picture,description, budget, begin_date, end_date} = transport;
 
           return( <GroupCard
             name={name}
+            key={_id}
             id={_id}
+            picture ={picture}
+            description={description}
+            budget={budget}
+            begin_date = {begin_date}
+            end_date = {end_date}
             />
             );
         }) : ""}

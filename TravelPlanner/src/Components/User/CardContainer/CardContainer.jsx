@@ -10,24 +10,7 @@ const CardContainer = () => {
     
       <TripCard/>
       <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
-      <TripCard/>
+     
      </div>
     </div>
   )

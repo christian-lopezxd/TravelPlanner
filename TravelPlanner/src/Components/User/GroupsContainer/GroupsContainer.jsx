@@ -29,12 +29,12 @@ console.log(data)
      <NavLink to="/NewGroup"> <button className='bg-purple hover:bg-darkpurple text-white text-2xl px-2 py-1 rounded shadow'>+ New Group</button></NavLink>
 
      
-     <div className='flex flex-wrap justify-center w-[100%] h-[30vh] p-5 gap-1'>
+     <div className='flex flex-wrap justify-center w-[100%] p-5 gap-1'>
       {
         data ? data.map((group, ) =>{
           const {name, picture, _id, aproved} = group;
 
-          if(aproved == false){
+          if(aproved == true){
             return( <GroupCard 
               key={name}
               name={name}

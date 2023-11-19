@@ -32,16 +32,75 @@ DestinationServices.Create  = async(formData) => {
             }
 
         }) 
-        console.log(response)
+        
+        if (response.status === 201) {
+          alert("Trip created successfully!");
+          navigate("/");
+        } else {
+          // Otro código de estado, manejar según sea necesario
+          alert("Error al intentar registrar al usuario.");
+        }
       
 
        
       return response.data
       
   }catch(error){
+    alert("Error creating a new trip. Please try again.");
       throw error
   }
 }
+
+
+DestinationServices.getImages = async (gid, id, picture) => {
+  try {
+    const response = await axios.get(`${url}/images/${gid}/${id}/${picture}`, {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+        'Access-Control-Allow-Origin': '*',
+      },
+      responseType: 'blob'
+    });
+
+    const imageUrl = URL.createObjectURL(response.data);
+    return imageUrl;
+
+  } catch (error) {
+    return '/Images/placeholder.png';
+  
+  }
+};
+
+DestinationServices.Delete  = async(idd, idg) => {
+  const config = {
+    headers: {
+        
+        "Authorization":'Bearer ' + localStorage.getItem("token")
+    }
+  }
+    
+  var resultado = confirm("¿Estás seguro de que quieres realizar esta acción?");
+    if (resultado) {
+
+
+      try {
+        const response = await axios.delete(`${url}/api/destination`, {
+          idd,
+          idg
+          
+        }, config);
+    return response;
+    
+      } catch (error) {
+      
+      }
+     
+    } else {
+      alert("Acción cancelada");
+    }
+  }
+
+
 
 export default DestinationServices;
 
