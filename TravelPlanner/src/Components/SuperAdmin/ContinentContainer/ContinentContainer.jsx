@@ -29,6 +29,7 @@ const ContinentContainer = () => {
           return( <ContinentCard
             name={name}
             id={_id}
+            key={_id}
             />
             );
         }) : ""}

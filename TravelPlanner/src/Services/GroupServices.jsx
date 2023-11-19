@@ -12,7 +12,9 @@ GroupServices.getAll = async ( ) => {
       const response = await axios.get(`${url}/api/group/`,   {
         
         headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem("token")
+          'Authorization': 'Bearer ' + localStorage.getItem("token"),
+          'Access-Control-Allow-Origin': '*',
+          
         }
         
         }) 
@@ -31,7 +33,8 @@ GroupServices.getAllunaproved = async ( ) => {
     const response = await axios.get(`${url}/api/group/f/gav`,   {
       
       headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem("token")
+        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+        'Access-Control-Allow-Origin': '*',
       }
       
       }) 
@@ -117,27 +120,45 @@ GroupServices.Create = async(formData, navigate) => {
           }) 
           if (response.status === 201) {
             alert("Group created successfully! please wait for an admin to approve it");
-            navigate("/");
+            navigate("/groups");
+            return response.data.status
           }
         
   
          
-        return response.data.status
+          throw new Error("Invalid response status");
         
     }catch(error){
+        throw error
+    }
+}
+
+GroupServices.Edit = async(formData, navigate) => {
+    
+    try{
+        const response = await axios.putForm(`${url}/api/group/ui`, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
+              }
+  
+          }) 
+          if (response.status === 201) {
+            alert("Group edited successfully!");
+            navigate("/groups");
+            return response.data.status
+          }
         
-        alert("Error creating a new group. Please try again.");
+  
+         
+          throw new Error("Invalid response status");
+        
+    }catch(error){
         throw error
     }
 }
 
 GroupServices.Delete  = async(idg) => {
-  const config = {
-    headers: {
-        
-        "Authorization":'Bearer ' + localStorage.getItem("token")
-    }
-  }
     
   var resultado = confirm("¿Estás seguro de que quieres realizar esta acción?");
     if (resultado) {
@@ -145,9 +166,18 @@ GroupServices.Delete  = async(idg) => {
 
       try {
         const response = await axios.delete(`${url}/api/group`, {
-          idg
+          headers: {
+        
+            "Authorization":'Bearer ' + localStorage.getItem("token"),
+            'Access-Control-Allow-Origin': '*',
+        },
+          data: {
+            idg
+          }
           
-        }, config);
+        });
+
+        window.location.reload()
     return response;
     
       } catch (error) {
@@ -159,7 +189,31 @@ GroupServices.Delete  = async(idg) => {
     }
   }
 
+  GroupServices.addpartipant = async (email, idg) => {
 
+    const config = {
+      headers: {
+          
+          "Authorization":'Bearer ' + localStorage.getItem("token")
+      }
+  }
+  
+  
+    try{
+      const response = await axios.post(`${url}/api/group/au/`, {
+          idg,
+          email
+         
+          
+        }, config) 
+       
+  
+        window.location.reload()
+      return response.data.jwt
+  }catch(error){
+      throw error
+  }
+  }
 
 
 export default GroupServices;

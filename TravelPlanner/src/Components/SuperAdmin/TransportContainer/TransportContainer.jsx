@@ -16,9 +16,8 @@ const TransportContainer = () => {
   
    
     
-  }, [data]);
-  
-console.log(data)
+  }, []);
+
 
 
     return (
@@ -26,10 +25,11 @@ console.log(data)
             <div className='bg-white w-[90%] flex flex-col items-center  gap-4 p-10 min-h-[100%] '>
                 <AddTransportCard/>
                 { data ? data.map((transport) =>{
-          const {name} = transport;
+          const {name, _id} = transport;
 
           return( <TransportCard
             name={name}
+            key={_id}
             />
             );
         }) : ""}

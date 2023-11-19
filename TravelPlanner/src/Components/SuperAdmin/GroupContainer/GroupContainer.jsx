@@ -18,7 +18,7 @@ const GroupContainer = () => {
     
   }, []);
 
-  console.log(data)
+
  
   return (
     <div className="flex col-span-5 items-center justify-center gap-2  py-5 text-white bg-lightgray min-h-[89.5vh]" > 

@@ -17,7 +17,7 @@ const UsersContainer = () => {
 
   }, []);
 
-  console.log(users)
+ 
 
 
   return (
@@ -27,7 +27,7 @@ const UsersContainer = () => {
           users ? users.map((user,) => {
             const { name, email, id, picture } = user;
             return (
-              <UserCard name={name} email={email} key={id} picture={picture} />
+              <UserCard name={name} email={email} key={email} picture={picture} />
             );
           }) : ""
         }

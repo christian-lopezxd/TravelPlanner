@@ -11,12 +11,22 @@ const RegisterCard = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [picture, setPicture] = useState([]);
 
   const Create = (e) => {
     e.preventDefault();
 
     if (password == repeatPassword) {
-      AuthServices.Register(name, email, password, navigate);
+      const formData = new FormData();
+  formData.append('name', name);
+  formData.append('email', email);
+  formData.append("password", password)
+  formData.append("role", "user")
+  formData.append("picture", picture)
+ 
+
+  AuthServices.Register(formData, navigate);
+      
       setName("");
       setEmail("");
       setPassword("");
@@ -25,20 +35,13 @@ const RegisterCard = () => {
       alert("Contraseñas no coinciden");
     }
 
-    if (!name || !email || !password || !repeatPassword) {
+    if (!name || !email || !password || !repeatPassword || !picture) {
       alert("faltan argumentos");
       return;
     }
 
 
-    const formData = new FormData();
-  formData.append('name', name);
-  formData.append('email', email);
-  formData.append("password", password)
-  formData.append("role", "user")
- 
-
-  AuthServices.Register(formData, navigate);
+    
   };
 
 
@@ -58,6 +61,7 @@ const RegisterCard = () => {
               className="w-full text-sm p-2 pl-5 pr-3 bg-transparent border-b border-gray-500 focus:outline-none"
               type="name"
               placeholder="Enter your username"
+              maxLength="15"
               required
             />
           </label>
@@ -85,7 +89,7 @@ const RegisterCard = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
 
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*,;.?¿])[a-zA-Z\d!@#$%^&*,;.?¿]{8,}$"
+              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;\'<>,.?/\\|]).{8,30}$"
               title="La contraseña debe tener al menos 8 caracteres, incluyendo una minúscula, una mayúscula, un número y un carácter especial."
               name="password"
               className="w-full text-sm p-2 pl-5 bg-transparent border-b border-gray-500 focus:outline-none"
@@ -103,7 +107,7 @@ const RegisterCard = () => {
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
               name="password"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*,;.?¿])[a-zA-Z\d!@#$%^&*,;.?¿]{8,}$"
+              pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;\'<>,.?/\\|]).{8,30}$"
               title="La contraseña debe tener al menos 8 caracteres, incluyendo una minúscula, una mayúscula, un número y un carácter especial."
               className="w-full text-sm p-2 pl-5 bg-transparent border-b border-gray-500 focus:outline-none"
               type="password"
@@ -112,7 +116,13 @@ const RegisterCard = () => {
             />
           </label>
         </div>
+        <div className="flex flex-col gap-2">
+        <label className="text-grissoft">Profile Picture</label>
+        <input onChange={(e) => setPicture(e.target.files[0])} type="file" accept="image/jpeg" multiple className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple file:text-white hover:file:bg-darkpurple  " placeholder="Enter group name"></input>
+        </div>
+
         <div className="flex justify-center">
+
           <button type="submit" className="font-monserrat font-semibold text-black bg-secondary hover:bg-primary py-2 px-4 rounded-2xl w-full text-center hover:text-white">Register</button>
         </div>
       </div>

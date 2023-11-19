@@ -6,19 +6,13 @@ import { useState, useEffect } from 'react';
 import DestinationServices from '../../../../Services/DestinationServices';
 
 const TripCard = (props) => {
-  const [images, setImages] = useState()
-
-  useEffect(() => {
-        
-    DestinationServices.getImages(props.id, ).then((info) => {
-      setImages(info);
-      
-    });
-    
   
-   
-    
-  }, []);
+
+  
+
+  const deleteTrip=() =>{
+    DestinationServices.Delete(props.id, props.gid)
+  }
 
   return (
     <div className="flex justify-between items-center w-[100%] bg-white shadow-2xl min-h-[30px] rounded p-3 font-montserrat text-black rounded-xl ">
@@ -28,7 +22,7 @@ const TripCard = (props) => {
 
         <div className="w-20 h-20 rounded-full overflow-hidden">
           <img
-            src={images}
+            src="/Images/placeholder.png"
             alt="Imagen"
             className="w-full h-full object-cover"
           />
@@ -45,8 +39,8 @@ const TripCard = (props) => {
 
 
       <div className='flex gap-2 font-semibold p-2'>
-       <NavLink to="/EditTrip/3"> <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><AiOutlineEdit /></button></NavLink>
-        <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><BsTrash3 /> </button>
+       <NavLink to={`/editTrip/${props.gid}/${props.id}`}> <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><AiOutlineEdit /></button></NavLink>
+        <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl' onClick={deleteTrip}><BsTrash3 /> </button>
 
       </div>
 

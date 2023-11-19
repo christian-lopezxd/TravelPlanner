@@ -1,13 +1,14 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { IoChevronBackSharp } from "react-icons/io5";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import GroupServices from '../../../Services/GroupServices';
-GroupServices
+
 
 
 const CreateGroupCard = () => {
+    const navigate = useNavigate();
 
     const [name, SetName] = useState("")
     const [descripton, SetDescription] = useState("")
@@ -30,8 +31,8 @@ const CreateGroupCard = () => {
         formData.append("budget", budget)
 
 
-        GroupServices.Create(formData);
-        { }
+        GroupServices.Create(formData, navigate);
+    
 
 
     }
@@ -45,7 +46,7 @@ const CreateGroupCard = () => {
                         <h1>Create a new group</h1>
                     </div>
                     <form onSubmit={(e) => Create(e)} className="flex flex-col gap-2 items-center justify-between w-full gap-10 grow">
-                        <input value={name} onChange={(e) => SetName(e.target.value)} type="name" className="text-black p-2 ml-5  border-b border-b-black w-[50%]" placeholder="Enter group name"></input>
+                        <input value={name} onChange={(e) => SetName(e.target.value)} type="name" className="text-black p-2 ml-5  border-b border-b-black w-[50%]" maxLength="15" placeholder="Enter group name"></input>
                         <div className='w-[100%]  flex items-start justify-center gap-5 '>
                             <div className='w-[45%] flex flex-col p-5 gap-5 justify-center  rounded-xl '>
                                 <input value={descripton} onChange={(e) => SetDescription(e.target.value)} type="text" className="text-black p-2   border-b border-b-black " minLength="10" placeholder="Enter a description"></input>

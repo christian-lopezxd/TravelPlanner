@@ -8,61 +8,67 @@ import { useEffect } from 'react';
 import GroupServices from '../../../Services/GroupServices';
 import DestinationServices from '../../../Services/DestinationServices';
 
+
 const GroupInfoCard = () => {
 
 
     const x = useParams();
-    console.log(x.id)
     const [images, setImages] = useState()
     const [data, setData] = useState("")
     const [trips, setTrips] = useState("")
+
+    const [email, setEmail] = useState("")
+
+    const Create = (e) => {
+        e.preventDefault()
+        GroupServices.addpartipant(email, x.id)
+
+
+    }
+
+
     useEffect(() => {
-        
-      GroupServices.getImages(x.id, data.picture).then((info) => {
-        setImages(info);
-        
-      });
-      
-    
-     
-      
+
+        GroupServices.getImages(x.id, data.picture).then((info) => {
+            setImages(info);
+
+        });
+
+
+
+
     }, [data]);
 
-   
+
 
     useEffect(() => {
-        
-      GroupServices.getOne(x.id).then((info) => {
-        setData(info);
-        
-      });
 
-    
-     
-      
-    }, []);
+        GroupServices.getOne(x.id).then((info) => {
+            setData(info);
 
-    
+        });
 
-    useEffect(() => {
-        
-      DestinationServices.getAll(x.id).then((info) => {
-        setTrips(info);
-        
-      });
-      
-    
-     
-      
+
+
+
     }, []);
 
 
-   
+
+    useEffect(() => {
+
+        DestinationServices.getAll(x.id).then((info) => {
+            setTrips(info);
+
+        });
 
 
-    
-  
-  console.log(trips)
+
+
+    }, []);
+
+
+
     return (
         <div className="flex col-span-5 items-center justify-center gap-2 w-[100%] py-5 text-black bg-lightgray min-h-[89.5vh]" >
             <div className='bg-white w-[90%] flex flex-col items-center  gap-4  min-h-[100%] rounded font-montserrat'>
@@ -86,18 +92,29 @@ const GroupInfoCard = () => {
                         <h1>{data.begin_date}</h1>
                     </div>
 
-                    <div className='flex w-[100%] items-start'>
-                        <div className='flex gap-2 flex-col w-[50%]'>
+                    <div className='flex w-[100%] justify-center'>
+                        <div className='flex gap-2 flex-col w-[75%]'>
                             <h1>Members: </h1>
+                            <div className="flex justify-center items-center w-[75%] bg-white  min-h-[30px] rounded p-3 font-montserrat text-black rounded-xl ">
+                                <form onSubmit={(e) => Create(e)} className="flex  gap-2 items-center" >
+                                    <label>Add a friend to this group: </label>
+                                    <input value={email}
+                                        onChange={(e) => setEmail(e.target.value)} type="email" className="text-black p-2 ml-5 rounded border border-lightgray  " placeholder="enter a user email"></input>
+                                    <div className="flex justify-center  "><button type="submit" className="bg-purple text-white hover:bg-darkpurple rounded-xl font-semibold  p-2"> Send</button></div>
+                                </form>
+
+
+
+                            </div>
                             {
-                                data.user_info ?  data.user_info.map((members,) =>{
-                                    const {name, email, id } = members;
-                                    return(
-                                        <MemberBox  name= {name} email={email} key={id}/>
+                                data.user_info ? data.user_info.map((members,) => {
+                                    const { name, email, _id } = members;
+                                    return (
+                                        <MemberBox name={name} email={email} key={name} />
                                     );
                                 }) : ""
                             }
-                            
+
                         </div>
 
                     </div>
@@ -111,21 +128,21 @@ const GroupInfoCard = () => {
                                     className="w-full h-full object-cover"
                                 />
                             </div>
-                           
-                            
+
+
                         </div>
                     </div>
                     <div className='flex flex-col items-center'>
-                    <NavLink to="NewTrip"> <button className='bg-purple hover:bg-darkpurple text-white text-2xl px-2 py-1 rounded shadow'>+ New Trip</button></NavLink>
-                    <h1 className='text-left w-[100%]'>Active trips: </h1>
-                    {
-                                trips ?  trips.map((trip,) =>{
-                                    const {name, description, _id } = trip;
-                                    return(
-                                        <TripCard  name= {name} description={description} key={_id} gid={x.id}/>
-                                    );
-                                }) : ""
-                            }
+                        <NavLink to="NewTrip"> <button className='bg-purple hover:bg-darkpurple text-white text-2xl px-2 py-1 rounded shadow'>+ New Trip</button></NavLink>
+                        <h1 className='text-left w-[100%]'>Active trips: </h1>
+                        {
+                            trips ? trips.map((trip,) => {
+                                const { name, description, _id } = trip;
+                                return (
+                                    <TripCard name={name} description={description} key={_id} gid={x.id} id={_id} />
+                                );
+                            }) : ""
+                        }
                     </div>
                 </div>
 

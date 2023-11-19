@@ -18,9 +18,6 @@ const FriendsContainer = () => {
    
     
   }, []);
-  
-
-console.log(data)
 
 
 

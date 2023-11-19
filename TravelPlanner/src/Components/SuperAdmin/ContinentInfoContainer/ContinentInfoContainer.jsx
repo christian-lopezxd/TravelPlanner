@@ -34,6 +34,7 @@ const ContinentInfoContainer = () => {
             return( <ContinentInfoCard
               name={name}
               id={_id}
+              key={_id}
               />
               );
           }

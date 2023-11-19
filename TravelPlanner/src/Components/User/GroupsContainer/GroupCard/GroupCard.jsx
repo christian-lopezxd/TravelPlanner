@@ -24,9 +24,10 @@ const GroupCard = (props) => {
    
     
   }, []);
-
-console.log(data)
  
+  const deleteGroup = () =>{
+    GroupServices.Delete(props.id);
+  }
   return (
     <div className='w-[30%] h-[30vh] relative group '>
       <div className='w-full h-[100%] relative overflow-hidden rounded'>
@@ -39,8 +40,8 @@ console.log(data)
           <div>
             <div className='flex gap-2 font-semibold p-2'>
               <NavLink to={`/group/${props.id}`}><button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><AiOutlineTeam /></button></NavLink>
-              <NavLink to="/EditGroup/:id"><button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><AiOutlineEdit /></button></NavLink>
-              <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><BsTrash3 /> </button>
+              <NavLink to={`/editGroup/${props.id}`}><button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><AiOutlineEdit /></button></NavLink>
+              <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl' onClick={deleteGroup}><BsTrash3 /> </button>
 
             </div>
           </div>

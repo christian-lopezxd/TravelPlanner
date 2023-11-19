@@ -26,14 +26,8 @@ const ProfileCard = () => {
     });
   }, []);
 
-  useEffect(() => {
 
-    UsersServices.getUsers().then((info) => {
-      setUsers(info);
-    });
-  }, []);
 
-  console.log(users)
 
 
   return (

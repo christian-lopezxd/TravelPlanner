@@ -20,7 +20,7 @@ const GroupsContainer = () => {
   }, []);
   
 
-console.log(data)
+
 
   return (
     <div className="flex col-span-5 items-center justify-center gap-2  py-5 text-white bg-lightgray min-h-[89.5vh]" > 
@@ -36,7 +36,7 @@ console.log(data)
 
           if(aproved == true){
             return( <GroupCard 
-              key={name}
+              key={_id}
               name={name}
               picture={picture} 
               id = {_id}/>

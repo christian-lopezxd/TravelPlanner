@@ -2,55 +2,102 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 const url = "./.."
 
-const DestinationServices = () => {}
+const DestinationServices = () => { }
 
 
 DestinationServices.getAll = async (id) => {
-    try{
-      const response = await axios.get(`${url}/api/destination/${id}`,   {
-        
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem("token")
-        }
-        
-        }) 
-        
-       
-      return response.data
-  }catch(error){
-      throw error
+  try {
+    const response = await axios.get(`${url}/api/destination/${id}`, {
+
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      }
+
+    })
+
+
+    return response.data
+  } catch (error) {
+    throw error
   }
 }
 
-DestinationServices.Create  = async(formData) => {
-    
-  try{
-      const response = await axios.postForm(`${url}/api/destination`, formData, {
-          headers: {
-              "Content-Type": "multipart/form-data",
-              'Authorization': 'Bearer ' + localStorage.getItem("token")
-            }
+DestinationServices.getOne = async (id) => {
+  try {
+    const response = await axios.get(`${url}/api/destination/fd/${id}`, {
 
-        }) 
-        
-        if (response.status === 201) {
-          alert("Trip created successfully!");
-          navigate("/");
-        } else {
-          // Otro código de estado, manejar según sea necesario
-          alert("Error al intentar registrar al usuario.");
-        }
-      
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      }
 
-       
-      return response.data
-      
-  }catch(error){
+    })
+
+
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+
+
+DestinationServices.Create = async (formData) => {
+
+  try {
+    const response = await axios.postForm(`${url}/api/destination`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      }
+
+    })
+
+    if (response.status === 201) {
+      alert("Trip created successfully!");
+      navigate("/");
+    } else {
+      // Otro código de estado, manejar según sea necesario
+      alert("Error al intentar registrar al usuario.");
+    }
+
+
+
+    return response.data
+
+  } catch (error) {
     alert("Error creating a new trip. Please try again.");
-      throw error
+    throw error
   }
 }
 
+DestinationServices.Edit = async (formData) => {
+
+  try {
+    const response = await axios.putForm(`${url}/api/destination/ui`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+      }
+
+    })
+
+    if (response.status === 201) {
+      alert("Trip edited successfully!");
+      navigate("/");
+    } else {
+    
+      alert("Error al intentar registrar al usuario.");
+    }
+
+
+
+    return response.data
+
+  } catch (error) {
+    alert("Error creating a new trip. Please try again.");
+    throw error
+  }
+}
 
 DestinationServices.getImages = async (gid, id, picture) => {
   try {
@@ -67,38 +114,44 @@ DestinationServices.getImages = async (gid, id, picture) => {
 
   } catch (error) {
     return '/Images/placeholder.png';
-  
+
   }
 };
 
-DestinationServices.Delete  = async(idd, idg) => {
+DestinationServices.Delete = async (idd, gid) => {
   const config = {
-    headers: {
-        
-        "Authorization":'Bearer ' + localStorage.getItem("token")
-    }
+
   }
-    
+
   var resultado = confirm("¿Estás seguro de que quieres realizar esta acción?");
-    if (resultado) {
+  if (resultado) {
 
 
-      try {
-        const response = await axios.delete(`${url}/api/destination`, {
+    try {
+      const response = await axios.delete(`${url}/api/destination`, {
+        headers: {
+
+          "Authorization": 'Bearer ' + localStorage.getItem("token"),
+          'Access-Control-Allow-Origin': '*',
+        },
+        data: {
           idd,
-          idg
-          
-        }, config);
-    return response;
-    
-      } catch (error) {
-      
-      }
-     
-    } else {
-      alert("Acción cancelada");
+          gid
+        }
+
+      });
+      window.location.reload()
+      return response;
+
+    } catch (error) {
+
     }
+
+  } else {
+    alert("Acción cancelada");
   }
+}
+
 
 
 

@@ -6,13 +6,6 @@ import { useState, useEffect } from 'react';
 const FriendCard = (props) => {
   const [data, setData] = useState()
 
-  useEffect(() => {
-      
-    FriendServices.getImages(props.picture).then((info) => {
-      setData(info);
-    });
-  }, []);
-
   
 
 
@@ -27,7 +20,7 @@ const FriendCard = (props) => {
 
       <div className="w-20 h-20 rounded-full overflow-hidden">
         <img
-          src={data}
+          src="/Images/placeholder.png"
           alt="Imagen"
           className="w-full h-full object-cover"
       
