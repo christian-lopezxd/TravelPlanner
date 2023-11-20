@@ -14,6 +14,12 @@ export default {
       white: '#FFFFFF',
       black: '#000000',
       gray: '#979dac',
+      green: '#18ba43',
+      darkgreen : '#085e1f',
+      red : '#e80716',
+      darkred : '#960912',
+      yellow: '#de9607',
+      darkyellow : '#996909'
      
     },
     fontFamily: {

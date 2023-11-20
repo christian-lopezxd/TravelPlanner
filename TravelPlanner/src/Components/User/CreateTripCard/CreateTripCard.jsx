@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { IoChevronBackSharp, IoUmbrella } from "react-icons/io5";
 import DestinationServices from '../../../Services/DestinationServices';
 import { useEffect, useState } from 'react';
@@ -8,7 +8,7 @@ import TransportServices from '../../../Services/TransportServices';
 
 const CreateTripCard = () => {
     const id = useParams();
-
+    const navigate = useNavigate();
     const [name, SetName] = useState("")
     const [descripton, SetDescription] = useState("")
     const [place_of_stay, SetPlace_of_stay] = useState("")
@@ -58,7 +58,7 @@ const CreateTripCard = () => {
         formData.append("picture", picture);
 
 
-        DestinationServices.Create(formData);
+        DestinationServices.Create(formData, navigate);
 
 
 
@@ -78,7 +78,7 @@ const CreateTripCard = () => {
                     <h1>Create a Trip</h1>
                 </div>
                 <form onSubmit={(e) => Create(e)} className="flex flex-col gap-2 items-center justify-between w-full gap-5 grow">
-                    <input value={name} onChange={(e) => SetName(e.target.value)} type="name"  maxLength="15" className="text-black p-2 ml-5  border-b border-b-black w-[50%]" placeholder="Enter group name"></input>
+                    <input value={name} onChange={(e) => SetName(e.target.value)} type="name"  maxLength="15" className="text-black p-2 ml-5  border-b border-b-black w-[50%]" placeholder="Enter trip name"></input>
                     <div className='w-[100%]  flex items-start justify-center gap-5 '>
                         <div className='w-[45%] flex flex-col p-5 gap-3 justify-center  rounded-xl '>
                             <label>Description: </label>
@@ -101,14 +101,14 @@ const CreateTripCard = () => {
 
                             </select>
                             <label>Budget: </label>
-                            <input value={budget} onChange={(e) => SetBudget(e.target.value)} type="number" className="text-black p-2   border-b border-b-black " placeholder="Enter budget $"></input>
+                            <input value={budget} onChange={(e) => SetBudget(e.target.value)} type="number" min="0" className="text-black p-2   border-b border-b-black " placeholder="Enter budget $"></input>
                             <label>Images: </label>
-                            <input value={picture} onChange={(e) => SetPicture(e.target.value)} type="file" accept="image/jpeg" multiple className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple file:text-white hover:file:bg-darkpurple  " placeholder="Enter group name"></input>
+                            <input value={picture} onChange={(e) => SetPicture(e.target.value)} type="file" accept="image/jpeg" className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple file:text-white hover:file:bg-darkpurple  " placeholder="Enter group name"></input>
                         </div>
 
                         <div className='flex flex-col w-[45%] p-5 gap-3 rounded-xl'>
                             <label>place of stay: </label>
-                            <input value={place_of_stay} onChange={(e) => SetPlace_of_stay(e.target.value)} type="text" minLength="10" className="text-black p-2   border rounded border-black " placeholder="Enter a description"></input>
+                            <input value={place_of_stay} onChange={(e) => SetPlace_of_stay(e.target.value)} type="text" minLength="10" className="text-black p-2   border rounded border-black " placeholder="Enter a play of stay"></input>
                             <label>Transport: </label>
                             <select value={tid} onChange={(e) => SetTid(e.target.value)} name="Countries" className="bg-white border rounded-md p-2 m-1 w-full">
 

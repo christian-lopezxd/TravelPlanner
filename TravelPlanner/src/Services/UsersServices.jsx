@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "./.."
+const url =  "./.."
 const UsersServices = () => {};
 
 
@@ -19,6 +19,27 @@ UsersServices.getUsers = async () => {
       return response.data
   }catch(error){
       throw error
+  }
+}
+
+UsersServices.getAllReported = async () => {
+
+
+  try {
+    const response = await axios.get(`${url}/api/report`, {
+
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem("token"),
+        'Access-Control-Allow-Origin': '*',
+
+      }
+
+    })
+
+
+    return response.data
+  } catch (error) {
+    throw error
   }
 }
 
@@ -77,6 +98,66 @@ UsersServices.update = async(formData, navigate) => {
   alert("Error en la petición de edicion. Por favor, inténtalo de nuevo.");
   }
 }
+
+UsersServices.createReport = async (email, reason) => {
+  
+  const config = {
+    headers: {
+
+      "Authorization": 'Bearer ' + localStorage.getItem("token"),
+      'Access-Control-Allow-Origin': '*',
+    }
+  }
+ 
+    try {
+      const response = await axios.post(`${url}/api/report`, {
+       
+          email,
+          reason
+        
+
+
+
+      }, config)
+      alert("User reported successfully")
+
+      window.location.reload()
+      return response.data
+
+    } catch (error) {
+      throw error
+    }
+  
+}
+
+UsersServices.ban = async (email) => {
+  const config = {
+    headers: {
+
+      "Authorization": 'Bearer ' + localStorage.getItem("token"),
+      'Access-Control-Allow-Origin': '*',
+    }
+  }
+ 
+    try {
+      const response = await axios.post(`${url}/api/report/b`, {
+       
+          email
+        
+
+
+
+      }, config)
+      alert("User banned successfully")
+
+      window.location.reload()
+      return response.data
+
+    } catch (error) {
+      throw error
+    }
+};
+
 
 
 

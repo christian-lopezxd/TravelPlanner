@@ -1,5 +1,5 @@
 import axios from "axios"
-const url = "./.."
+const url =  "./.."
 
 const ContinentServices = () => {}
 

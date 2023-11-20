@@ -20,7 +20,6 @@ const MainRouter = () => {
                 }
             } catch (error) {
                 console.error("Error decoding token:", error);
-                // Manejar el error según sea necesario
             }
         }
     }, [token]);

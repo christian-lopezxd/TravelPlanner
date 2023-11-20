@@ -63,8 +63,8 @@ const GroupCard = (props) => {
 
 
     <div className='flex gap-2 font-semibold p-2'>
-      <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl' onClick={toggle}><FaCheck/></button>
-      <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl' onClick={deleteGroup}><BsTrash3/> </button>
+      <button className='bg-green hover:bg-darkgreen text-white text-2xl p-2 rounded shadow-2xl' onClick={toggle}><FaCheck/></button>
+      <button className='bg-red hover:bg-darkred text-white text-2xl p-2 rounded shadow-2xl' onClick={deleteGroup}><BsTrash3/> </button>
     </div>
 
   </div>

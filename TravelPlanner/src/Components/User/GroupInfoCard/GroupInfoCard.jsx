@@ -27,17 +27,7 @@ const GroupInfoCard = () => {
     }
 
 
-    useEffect(() => {
-
-        GroupServices.getImages(x.id, data.picture).then((info) => {
-            setImages(info);
-
-        });
-
-
-
-
-    }, [data]);
+    
 
 
 
@@ -52,6 +42,16 @@ const GroupInfoCard = () => {
 
 
     }, []);
+
+    useEffect(() => {
+
+      if(data.picture){
+        GroupServices.getImages(x.id, data.picture).then((info) => {
+            setImages(info);
+
+        });
+      }
+    }, [data]);
 
 
 
@@ -93,8 +93,8 @@ const GroupInfoCard = () => {
                     </div>
 
                     <div className='flex w-[100%] justify-center'>
-                        <div className='flex gap-2 flex-col w-[75%]'>
-                            <h1>Members: </h1>
+                        <div className='flex gap-2 flex-col justify-center items-center w-[75%]'>
+                            <h1 className='w-[100%] text-left'>Members: </h1>
                             <div className="flex justify-center items-center w-[75%] bg-white  min-h-[30px] rounded p-3 font-montserrat text-black rounded-xl ">
                                 <form onSubmit={(e) => Create(e)} className="flex  gap-2 items-center" >
                                     <label>Add a friend to this group: </label>
@@ -108,9 +108,10 @@ const GroupInfoCard = () => {
                             </div>
                             {
                                 data.user_info ? data.user_info.map((members,) => {
-                                    const { name, email, _id } = members;
+                                    const { name, email, group_role } = members;
+                                    
                                     return (
-                                        <MemberBox name={name} email={email} key={name} />
+                                        <MemberBox name={name} email={email} key={name} idg={x.id} role={group_role} />
                                     );
                                 }) : ""
                             }
@@ -132,8 +133,8 @@ const GroupInfoCard = () => {
 
                         </div>
                     </div>
-                    <div className='flex flex-col items-center'>
-                        <NavLink to="NewTrip"> <button className='bg-purple hover:bg-darkpurple text-white text-2xl px-2 py-1 rounded shadow'>+ New Trip</button></NavLink>
+                    <div className='flex flex-col items-center justify-center w-[100%]'>
+                        <NavLink to={`/${x.id}/NewTrip`}> <button className='bg-purple hover:bg-darkpurple text-white text-2xl px-2 py-1 rounded shadow'>+ New Trip</button></NavLink>
                         <h1 className='text-left w-[100%]'>Active trips: </h1>
                         {
                             trips ? trips.map((trip,) => {

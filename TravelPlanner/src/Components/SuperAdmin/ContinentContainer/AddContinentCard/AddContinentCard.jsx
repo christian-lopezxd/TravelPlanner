@@ -18,7 +18,7 @@ const AddContinentCard = () => {
      <form onSubmit={(e) => Create(e)} className="flex  gap-2 items-center" >
             <label>Add a Continent: </label>
             <input value={name}
-              onChange={(e) => set(e.target.value)} type="name" className="text-black p-2 ml-5 rounded border border-lightgray  "placeholder="Add a continent name"></input>
+              onChange={(e) => setName(e.target.value)} type="name" className="text-black p-2 ml-5 rounded border border-lightgray  "placeholder="Add a continent name"></input>
             <div className="flex justify-center  "><button type="submit"  className="bg-purple text-white hover:bg-darkpurple rounded-xl font-semibold  p-2"> Create</button></div>
         </form>
 

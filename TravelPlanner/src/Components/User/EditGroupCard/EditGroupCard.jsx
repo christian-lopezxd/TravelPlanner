@@ -23,8 +23,7 @@ const EditGroupCard = () => {
           setData(info);
           setName(info.name) 
           setDescription(info.description)
-          setBudget(info.budget)
-          setPicture(info.picture) 
+          setBudget(info.budget) 
           setIdg(x.id)  
         });
         

@@ -18,7 +18,7 @@ const TransportCard = (props) => {
     </div>
 
     <div className='flex gap-2 font-semibold p-2'>
-      <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><BsTrash3 /> </button>
+      <button className='bg-red hover:bg-darkred text-white text-2xl p-2 rounded shadow-2xl'><BsTrash3 /> </button>
     </div>
 
   </div>

@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-const url = "./.."
+const url =  "./.."
 
 const DestinationServices = () => { }
 
@@ -41,7 +41,7 @@ DestinationServices.getOne = async (id) => {
 
 
 
-DestinationServices.Create = async (formData) => {
+DestinationServices.Create = async (formData, navigate) => {
 
   try {
     const response = await axios.postForm(`${url}/api/destination`, formData, {
@@ -70,7 +70,7 @@ DestinationServices.Create = async (formData) => {
   }
 }
 
-DestinationServices.Edit = async (formData) => {
+DestinationServices.Edit = async (formData, navigate) => {
 
   try {
     const response = await axios.putForm(`${url}/api/destination/ui`, formData, {

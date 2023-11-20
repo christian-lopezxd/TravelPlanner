@@ -39,7 +39,7 @@ const TripCard = (props) => {
 
 
       <div className='flex gap-2 font-semibold p-2'>
-       <NavLink to={`/editTrip/${props.gid}/${props.id}`}> <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><AiOutlineEdit /></button></NavLink>
+       <NavLink to={`/${props.gid}/${props.id}`}> <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl'><AiOutlineEdit /></button></NavLink>
         <button className='bg-purple hover:bg-darkpurple text-white text-2xl p-2 rounded shadow-2xl' onClick={deleteTrip}><BsTrash3 /> </button>
 
       </div>

@@ -8,6 +8,7 @@ import Transport from "../Pages/SuperAdmin/Transport";
 import Users from "../Pages/SuperAdmin/Users";
 import Profile from "../Pages/SuperAdmin/Profile";
 import EditProfile from "../Pages/SuperAdmin/EditProfile";
+import Reports from "../Pages/SuperAdmin/Reports";
 
 
 const SuperAdminRouter = () => {
@@ -22,6 +23,7 @@ const SuperAdminRouter = () => {
             <Route path="/friends" element={<Friends/>}></Route>
             <Route path="/Profile" element={<Profile/>}></Route>
             <Route path="/Profile/edit" element={<EditProfile/>}></Route>
+            <Route path="/reports" element={<Reports/>}></Route>
         </Routes>
 
     )

@@ -3,10 +3,11 @@ import ActionButton from '../../User/Sidebar/ActionButton/ActionButton';
 import { AiOutlineTeam } from "react-icons/ai";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 import Logout from '../../User/Sidebar/Logout/Logout';
-import { LuMapPin } from "react-icons/lu";
 import { MdEmojiTransportation } from "react-icons/md";
 import { FaRegMap } from "react-icons/fa";
 import { GoGear } from "react-icons/go";
+import { MdOutlineReportProblem } from "react-icons/md";
+
 
 
 
@@ -21,6 +22,7 @@ const Sidebar = () => {
                 <ActionButton icon={<AiOutlineUsergroupAdd />} name="Friends" url="friends" />
                 <ActionButton icon={<FaRegMap />} name="Continents" url="continents" />
                 <ActionButton icon={<MdEmojiTransportation />} name="Transports" url="transport" />
+                <ActionButton icon={<MdOutlineReportProblem />} name="Reports" url="reports" />
             </div>
 
 
