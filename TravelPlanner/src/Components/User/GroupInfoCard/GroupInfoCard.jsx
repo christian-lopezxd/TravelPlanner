@@ -138,9 +138,9 @@ const GroupInfoCard = () => {
                         <h1 className='text-left w-[100%]'>Active trips: </h1>
                         {
                             trips ? trips.map((trip,) => {
-                                const { name, description, _id } = trip;
+                                const { name, description, _id, pictures } = trip;
                                 return (
-                                    <TripCard name={name} description={description} key={_id} gid={x.id} id={_id} />
+                                    <TripCard name={name} description={description} key={_id} gid={x.id} id={_id} picture={pictures[0]} />
                                 );
                             }) : ""
                         }

@@ -6,8 +6,14 @@ import { useState, useEffect } from 'react';
 import DestinationServices from '../../../../Services/DestinationServices';
 
 const TripCard = (props) => {
-  
 
+  const [images, setImages] = useState()
+  
+  useEffect(() => {
+    DestinationServices.getImages(props.gid, props.id, props.picture).then((info) => {
+        setImages(info);
+    });
+  });
   
 
   const deleteTrip=() =>{
@@ -22,7 +28,7 @@ const TripCard = (props) => {
 
         <div className="w-20 h-20 rounded-full overflow-hidden">
           <img
-            src="/Images/placeholder.png"
+            src={images}
             alt="Imagen"
             className="w-full h-full object-cover"
           />
