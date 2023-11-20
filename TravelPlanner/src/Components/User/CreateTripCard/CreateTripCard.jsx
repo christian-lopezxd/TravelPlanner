@@ -55,7 +55,7 @@ const CreateTripCard = () => {
         formData.append("end_date", end_date);
         formData.append('cid', cid);
         formData.append('gid', id.id);
-        formData.append("picture", picture);
+        formData.append("pictures", picture);
 
 
         DestinationServices.Create(formData, navigate);
@@ -103,7 +103,7 @@ const CreateTripCard = () => {
                             <label>Budget: </label>
                             <input value={budget} onChange={(e) => SetBudget(e.target.value)} type="number" min="0" className="text-black p-2   border-b border-b-black " placeholder="Enter budget $"></input>
                             <label>Images: </label>
-                            <input value={picture} onChange={(e) => SetPicture(e.target.value)} type="file" accept="image/jpeg" className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple file:text-white hover:file:bg-darkpurple  " placeholder="Enter group name"></input>
+                            <input onChange={(e) => SetPicture(e.target.files[0])} type="file" accept="image/jpeg" className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple file:text-white hover:file:bg-darkpurple  " placeholder="Enter group name"></input>
                         </div>
 
                         <div className='flex flex-col w-[45%] p-5 gap-3 rounded-xl'>
